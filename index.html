@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Varshitha | Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --blue: #287bff;
+            --red: #ff4057;
+            --background: #0b1120;
+            --card: #141e32;
+            --text: #f4f7ff;
+            --muted: #aab6cc;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: var(--background);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: #0b1120;
+            border-bottom: 1px solid #26334b;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+            color: var(--blue);
+        }
+
+        .logo span {
+            color: var(--red);
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            color: var(--text);
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--red);
+        }
+
+        /* Home Section */
+
+        .hero {
+            min-height: 570px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+            padding: 90px 10%;
+            background: radial-gradient(
+                circle at 85% 30%,
+                #173568 0,
+                transparent 35%
+            );
+        }
+
+        .hero-content {
+            max-width: 650px;
+        }
+
+        .tag {
+            color: var(--red);
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        h1 {
+            font-size: clamp(38px, 5vw, 62px);
+            line-height: 1.2;
+            margin: 20px 0;
+        }
+
+        h1 span {
+            color: var(--blue);
+        }
+
+        .hero-content p {
+            color: var(--muted);
+            margin-bottom: 25px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 23px;
+            border-radius: 7px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .primary {
+            background: var(--blue);
+            color: white;
+        }
+
+        .primary:hover {
+            background: var(--red);
+            transform: translateY(-3px);
+        }
+
+        .outline {
+            border: 1px solid var(--red);
+            color: white;
+        }
+
+        .outline:hover {
+            background: var(--red);
+        }
+
+        .profile-card {
+            min-width: 250px;
+            width: 280px;
+            height: 300px;
+            border: 1px solid #354a70;
+            border-radius: 20px;
+            background: linear-gradient(
+                145deg, #172c50, #141e32, #351b35
+            );
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 20px 60px #0005;
+            transition: 0.3s;
+        }
+
+        .profile-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(
+                135deg, var(--blue), var(--red)
+            );
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 55px;
+            margin-bottom: 20px;
+        }
+
+        .profile-card h2 {
+            font-size: 23px;
+        }
+
+        .profile-card p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* Common Sections */
+
+        section {
+            padding: 75px 10%;
+        }
+
+        .section-heading {
+            text-align: center;
+            font-size: 34px;
+            margin-bottom: 12px;
+        }
+
+        .section-heading span {
+            color: var(--red);
+        }
+
+        .section-subtitle {
+            color: var(--muted);
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        /* About */
+
+        .about-box {
+            background: var(--card);
+            padding: 30px;
+            border-left: 4px solid var(--blue);
+            border-radius: 10px;
+        }
+
+        .about-box p {
+            color: var(--muted);
+        }
+
+        .about-box strong {
+            color: var(--text);
+        }
+
+        /* Skills */
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+        }
+
+        .skill {
+            background: var(--card);
+            padding: 22px;
+            border-radius: 10px;
+            border: 1px solid #273751;
+            transition: 0.3s;
+        }
+
+        .skill:hover {
+            border-color: var(--red);
+            transform: translateY(-4px);
+        }
+
+        .skill-title {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .skill-title span {
+            color: var(--blue);
+        }
+
+        .bar {
+            height: 7px;
+            background: #303b50;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background: linear-gradient(
+                90deg, var(--blue), var(--red)
+            );
+            border-radius: 10px;
+        }
+
+        /* Projects */
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .project {
+            background: var(--card);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #273751;
+            border-bottom: 3px solid var(--blue);
+            transition: 0.3s;
+        }
+
+        .project:hover {
+            transform: translateY(-7px);
+            border-bottom-color: var(--red);
+        }
+
+        .project-number {
+            font-size: 30px;
+            font-weight: bold;
+            color: var(--red);
+            margin-bottom: 12px;
+        }
+
+        .project h3 {
+            margin-bottom: 12px;
+            color: var(--text);
+        }
+
+        .project p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .tech {
+            color: #8bb7ff;
+            font-size: 12px;
+            margin-top: 18px;
+        }
+
+        /* Contact */
+
+        .contact-box {
+            max-width: 700px;
+            margin: auto;
+            background: var(--card);
+            border: 1px solid #273751;
+            border-radius: 12px;
+            padding: 35px;
+            text-align: center;
+        }
+
+        .contact-box p {
+            color: var(--muted);
+            margin-bottom: 20px;
+        }
+
+        .email {
+            display: inline-block;
+            color: var(--blue);
+            font-weight: bold;
+            overflow-wrap: anywhere;
+            margin-bottom: 22px;
+        }
+
+        .email:hover {
+            color: var(--red);
+        }
+
+        /* Footer */
+
+        footer {
+            padding: 25px 8%;
+            text-align: center;
+            border-top: 1px solid #26334b;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        footer span {
+            color: var(--red);
+        }
+
+        /* Responsive Design */
+
+        @media (max-width: 850px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav {
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding: 60px 7%;
+            }
+
+            .buttons {
+                justify-content: center;
+            }
+
+            .profile-card {
+                min-width: 0;
+                width: 250px;
+                height: 270px;
+            }
+
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 550px) {
+            section {
+                padding: 55px 7%;
+            }
+
+            .skills-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-heading {
+                font-size: 29px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <div class="logo">V<span>.</span></div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Home -->
+    <div class="hero" id="home">
+
+        <div class="hero-content">
+            <div class="tag">WELCOME TO MY PORTFOLIO</div>
+
+            <h1>
+                Hello, I'm<br>
+                <span>Varshitha.</span>
+            </h1>
+
+            <p>
+                BCA 3rd Year Student | Aspiring Web Developer
+
+                <br><br>
+
+                I am passionate about technology, programming,
+                and creative web design. I enjoy learning new
+                skills and building useful digital projects.
+            </p>
+
+            <div class="buttons">
+                <a href="#projects" class="btn primary">
+                    Explore Projects
+                </a>
+
+                <a href="#contact" class="btn outline">
+                    Contact Me
+                </a>
+            </div>
+        </div>
+
+        <div class="profile-card">
+            <div class="avatar">👩🏻‍💻</div>
+            <h2>Varshitha</h2>
+            <p>BCA 3rd Year</p>
+        </div>
+
+    </div>
+
+    <!-- About Me -->
+    <section id="about">
+
+        <h2 class="section-heading">About <span>Me</span></h2>
+
+        <p class="section-subtitle">
+            Get to know me
+        </p>
+
+        <div class="about-box">
+            <p>
+                Hello! I am <strong>Varshitha</strong>, a
+                <strong>BCA 3rd Year student</strong> at
+                <strong>SVRFGC</strong>.
+
+                <br><br>
+
+                I am interested in web development, programming,
+                and technology. I enjoy learning new concepts,
+                practising coding, and creating simple,
+                user-friendly applications.
+
+                <br><br>
+
+                My goal is to improve my technical knowledge,
+                gain practical experience, and become a skilled
+                software developer.
+            </p>
+        </div>
+
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+
+        <h2 class="section-heading">My <span>Skills</span></h2>
+
+        <p class="section-subtitle">
+            Technical skills I practise and develop
+        </p>
+
+        <div class="skills-grid">
+
+            <div class="skill">
+                <div class="skill-title">
+                    <strong>HTML</strong>
+                    <span>85%</span>
+                </div>
+                <div class="bar">
+                    <div class="progress" style="width:85%"></div>
+                </div>
+            </div>
+
+            <div class="skill">
+                <div class="skill-title">
+                    <strong>CSS</strong>
+                    <span>75%</span>
+                </div>
+                <div class="bar">
+                    <div class="progress" style="width:75%"></div>
+                </div>
+            </div>
+
+            <div class="skill">
+                <div class="skill-title">
+                    <strong>JavaScript</strong>
+                    <span>60%</span>
+                </div>
+                <div class="bar">
+                    <div class="progress" style="width:60%"></div>
+                </div>
+            </div>
+
+            <div class="skill">
+                <div class="skill-title">
+                    <strong>Python</strong>
+                    <span>65%</span>
+                </div>
+                <div class="bar">
+                    <div class="progress" style="width:65%"></div>
+                </div>
+            </div>
+
+            <div class="skill">
+                <div class="skill-title">
+                    <strong>Flask</strong>
+                    <span>55%</span>
+                </div>
+                <div class="bar">
+                    <div class="progress" style="width:55%"></div>
+                </div>
+            </div>
+
+            <div class="skill">
+                <div class="skill-title">
+                    <strong>SQLite</strong>
+                    <span>60%</span>
+                </div>
+                <div class="bar">
+                    <div class="progress" style="width:60%"></div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+
+        <h2 class="section-heading">My <span>Projects</span></h2>
+
+        <p class="section-subtitle">
+            Projects that showcase my learning
+        </p>
+
+        <div class="projects-grid">
+
+            <div class="project">
+                <div class="project-number">01</div>
+
+                <h3>Online Furniture Shop</h3>
+
+                <p>
+                    A furniture shopping project designed to
+                    organise furniture products and their details.
+                    It focuses on product names, categories,
+                    prices, and quantities, with CRUD operations
+                    for managing furniture records.
+                </p>
+
+                <div class="tech">
+                    Python · Flask · SQLite
+                </div>
+            </div>
+
+            <div class="project">
+                <div class="project-number">02</div>
+
+                <h3>Task List Application</h3>
+
+                <p>
+                    A simple task management application that
+                    helps users add daily tasks, edit task details,
+                    and organise their activities in one place.
+                </p>
+
+                <div class="tech">
+                    HTML · CSS · JavaScript
+                </div>
+            </div>
+
+            <div class="project">
+                <div class="project-number">03</div>
+
+                <h3>Personal Portfolio</h3>
+
+                <p>
+                    A professional personal website that presents
+                    my introduction, educational background,
+                    technical skills, projects, and contact details
+                    in a responsive layout.
+                </p>
+
+                <div class="tech">
+                    HTML · CSS
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+
+        <h2 class="section-heading">Contact <span>Me</span></h2>
+
+        <p class="section-subtitle">
+            Let's connect and share ideas
+        </p>
+
+        <div class="contact-box">
+
+            <p>
+                Thank you for visiting my portfolio.
+                Feel free to email me for communication
+                or collaboration.
+            </p>
+
+            <a class="email"
+               href="mailto:varshithareddy148@gmail.com">
+                varshithareddy148@gmail.com
+            </a>
+
+            <br>
+
+            <a href="mailto:varshithareddy148@gmail.com"
+               class="btn primary">
+                Send Me an Email
+            </a>
+
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>
+            © 2026 Varshitha | Designed with
+            <span>♥</span> using HTML and CSS
+        </p>
+    </footer>
+
+</body>
+</html>
